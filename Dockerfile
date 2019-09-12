@@ -49,23 +49,23 @@ RUN apt-get update && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 # Update cache and install Nginx
 RUN apt-get update && apt-get install nginx -y && usermod -u 1000 www-data
-RUN apt-get update && apt-get install php7.1-fpm \
-                                      php7.1-cli \
-                                      php7.1-bcmath \
-                                      php7.1-mcrypt \
-                                      php7.1-json \
-                                      php7.1-opcache \
-                                      php7.1-mysql \
-                                      php7.1-mbstring \
-                                      php7.1-gd \
-                                      php7.1-imap  \
-                                      php7.1-xdebug \
-                                      php7.1-intl \
-                                      php7.1-gd \
-                                      php7.1-curl \
-                                      php7.1-zip \
-                                      php7.1-xml \
-                                      php7.1-yaml -y
+RUN apt-get update && apt-get install php7.0-fpm \
+                                      php7.0-cli \
+                                      php7.0-bcmath \
+                                      php7.0-mcrypt \
+                                      php7.0-json \
+                                      php7.0-opcache \
+                                      php7.0-mysql \
+                                      php7.0-mbstring \
+                                      php7.0-gd \
+                                      php7.0-imap  \
+                                      php7.0-xdebug \
+                                      php7.0-intl \
+                                      php7.0-gd \
+                                      php7.0-curl \
+                                      php7.0-zip \
+                                      php7.0-xml \
+                                      php7.0-yaml -y
 
 RUN apt-get --purge autoremove -y
 
@@ -73,10 +73,10 @@ RUN apt-get --purge autoremove -y
 RUN mkdir -p /usr/local/bin
 COPY scripts/*.* /usr/local/bin/
 RUN cp /usr/local/bin/nginx.conf /etc/nginx/
-RUN cp /usr/local/bin/php.ini /etc/php/7.1/fpm
+RUN cp /usr/local/bin/php.ini /etc/php/7.0/fpm
 
-RUN sed -i -e "s/;listen.mode = 0660/listen.mode = 0750/g" /etc/php/7.1/fpm/pool.d/www.conf
-RUN find /etc/php/7.1/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
+RUN sed -i -e "s/;listen.mode = 0660/listen.mode = 0750/g" /etc/php/7.0/fpm/pool.d/www.conf
+RUN find /etc/php/7.0/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
 
 #########################

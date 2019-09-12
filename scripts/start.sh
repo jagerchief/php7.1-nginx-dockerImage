@@ -12,9 +12,9 @@ sudo sed -i "s|{index_app}|${START_PAGE}|g" /etc/nginx/sites-available/server.co
 sudo ln -s /etc/nginx/sites-available/server.conf -t /etc/nginx/sites-enabled/
 
 # Enable xdebug
-echo "xdebug.remote_enable = 1" >>  /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-echo "xdebug.remote_autostart = 1" >>  /etc/php/7.1/fpm/conf.d/20-xdebug.ini
-echo "xdebug.remote_host=${XDEBUG_IP}" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
+echo "xdebug.remote_enable = 1" >>  /etc/php/7.0/fpm/conf.d/20-xdebug.ini
+echo "xdebug.remote_autostart = 1" >>  /etc/php/7.0/fpm/conf.d/20-xdebug.ini
+echo "xdebug.remote_host=${XDEBUG_IP}" >> /etc/php/7.0/fpm/conf.d/20-xdebug.ini
 
 
 echo "Installing composer"
@@ -22,8 +22,12 @@ echo "Installing composer"
 
 echo "Deleting symfony cache"
 rm -rf /var/www/current/var/cache/
+chown www-data:www-data /var/log/symfony/ -R
+chown www-data:www-data /var/cache/symfony/ -R
+
+
 
 echo "restarting services"
-sudo service php7.1-fpm start
+sudo service php7.0-fpm start
 sudo nginx
 

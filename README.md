@@ -1,4 +1,4 @@
-# Base Docker image with php7.1 and Nginx for Symfony
+# Base Docker image with php7.0 and Nginx for Symfony
 
 This repo contains a base Docker image ready to work with Symfony projects.
 
@@ -8,8 +8,8 @@ This repo contains a base Docker image ready to work with Symfony projects.
 Just clone the repo, build the docker image:
 
 ```sh
-git clone git@github.com:jagerchief/php7.1-nginx-dockerImage.git
-cd php7.1-nginx-dockerImage
+git clone git@github.com:jagerchief/php7.0-nginx-dockerImage.git
+cd php7.0-nginx-dockerImage
 docker build -t universal_php_nginx:latest .
 ```
 
